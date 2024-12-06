@@ -1,0 +1,54 @@
+<nav class="bg-white border-b shadow-lg">
+  <div class="container mx-auto px-6 py-6 flex justify-between items-center">
+    <!-- Logo -->
+    <h1 class="text-xl font-bold text-gray-800">
+      <a [routerLink]="'Home'">Festeve</a>
+    </h1>
+
+    <!-- Mobile Menu Button -->
+    <button
+      class="lg:hidden block text-gray-800 focus:outline-none"
+      (click)="toggleMenu()"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16m-7 6h7"
+        />
+      </svg>
+    </button>
+
+    <!-- Navigation Links -->
+    <ul
+      class="hidden lg:flex space-x-6 text-gray-700 font-medium"
+    >
+      <li><a [routerLink]="'Home'" routerLinkActive="active" class="hover:text-lime-700">Home</a></li>
+      <li><a [routerLink]="'clothing'" class="hover:text-lime-700">Clothing</a></li>
+      <li><a [routerLink]="'Purohit'" class="hover:text-lime-700">Purohit</a></li>
+      <li><a [routerLink]="'essentials'" class="hover:text-lime-700">Essentials</a></li>
+      <li><a [routerLink]="'about-us'" class="hover:text-lime-700">About</a></li>
+    </ul>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    class="lg:hidden"
+    [ngClass]="{ 'block': isMenuOpen, 'hidden': !isMenuOpen }"
+  >
+    <ul class="space-y-4 bg-white px-4 py-6 text-gray-700 font-medium">
+      <li><a [routerLink]="'Home'"  routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }" class="block hover:text-blue-600">Home</a></li>
+      <li><a [routerLink]="'clothing'" class="block hover:text-lime-700">Clothing</a></li>
+      <li><a [routerLink]="'Purohit'" class="block hover:text-lime-700">Purohit</a></li>
+      <li><a [routerLink]="'essentials'" class="block hover:text-lime-7000">Essentials</a></li>
+      <li><a [routerLink]="'about-us'" class="block hover:text-lime-700">About</a></li>
+    </ul>
+  </div>
+</nav>
