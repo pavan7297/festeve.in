@@ -8,78 +8,206 @@
   <div class="mb-8 pt-24 pl-56">
     <h1 class="text-2xl font-bold">Our Collections</h1>
   </div>
-<!-- Formals and Semi-Formals Section -->
-<div class="flex justify-center items-center">
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 w-full max-w-9xl px-4">
+  <!-- Formals and Semi-Formals Section -->
+  <div class="flex justify-center items-center">
     <div
-      class="p-4 border rounded-xl shadow hover:shadow-lg min-h-[20rem] transition bg-[url('https://i.postimg.cc/jj95n4wt/cc2afd94-f379-49d5-a6e4-ecc1314442e3.png')] bg-cover bg-center"
+      class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 w-full max-w-9xl px-4"
     >
-      <a [routerLink]="'Formals'">
-        <h2 class="text-xl text-white pt-14  font-semibold text-center">Formals</h2>
+      <div
+        class="p-4 border rounded-xl shadow hover:shadow-lg min-h-[20rem] transition bg-[url('https://i.postimg.cc/jj95n4wt/cc2afd94-f379-49d5-a6e4-ecc1314442e3.png')] bg-cover bg-center"
+      >
+        <a [routerLink]="'Formals'">
+          <h2 class="text-xl text-white pt-14 font-semibold text-center">
+            Formals
+          </h2>
+        </a>
+      </div>
+      <div
+        class="p-4 border rounded-xl shadow hover:shadow-lg min-h-[20rem] transition bg-[url('https://i.postimg.cc/fkQL8cYm/32785d81-8927-4a0d-bead-87fbbc7a3ab0.png')] bg-cover bg-center"
+      >
+        <a [routerLink]="'semi-formals'">
+          <h2 class="text-xl text-white pt-14 font-semibold text-center">
+            Semi Formals
+          </h2>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ethnic Collection Section -->
+  <div class="flex justify-center items-center">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8 w-full max-w-8xl px-4"
+    >
+      <div
+        class="p-4 border rounded-xl shadow hover:shadow-lg min-h-[18rem] transition bg-[url('https://i.postimg.cc/LhdKdR4Z/a6f76422-c41e-4d0b-8c69-3bb48e5d660e.png')] bg-cover bg-center"
+      >
+        <a [routerLink]="'ethnics'">
+          <h2 class="text-xl text-white pt-24 font-semibold text-center">
+            Ethnics
+          </h2>
+        </a>
+      </div>
+      <div
+        class="p-4 border rounded-xl shadow hover:shadow-lg min-h-[16rem] transition bg-[url('https://i.postimg.cc/N0y0wGBd/ef87487a-8e13-46b0-a8a0-6ad9b63f21fe.png')] bg-cover bg-center"
+      >
+        <a [routerLink]="'luxe-ethnics'">
+          <h2 class="text-xl text-white pt-24 font-semibold text-center">
+            Luxe Ethnic
+          </h2>
+        </a>
+      </div>
+      <div
+        class="p-4 border rounded-xl shadow hover:shadow-lg min-h-[16rem] transition bg-[url('https://i.postimg.cc/rp5v47J8/45154480-bf42-4329-acc3-ee6d95765dbb.png')] bg-cover bg-center"
+      >
+        <a [routerLink]="'daily-ethnics'">
+          <h2 class="text-xl text-white pt-24 font-semibold text-center">
+            Daily Ethnics
+          </h2>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Men, Women, and Child Section -->
+  <div class="flex justify-center items-center">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 w-full max-w-2xl px-4"
+    >
+      <div
+        class="p-4 rounded min-h-[13rem] hover:shadow-lg transition bg-[url('https://i.postimg.cc/bw56mPgx/8be5b2a8-2124-492e-8109-c9e181865e14.png')] bg-cover bg-center"
+      >
+        <a [routerLink]="'men'">
+          <h2 class="text-xl text-white pt-12 font-semibold text-center">
+            Men
+          </h2>
+        </a>
+      </div>
+      <div
+        class="p-4 rounded min-h-[9rem] hover:shadow-lg transition bg-[url('https://i.postimg.cc/xjg3sYTX/cc2f3b16-5961-42a0-bce9-b9453c194a4e.png')] bg-cover bg-center"
+      >
+        <a [routerLink]="'women'">
+          <h2 class="text-xl text-white pt-12 font-semibold text-center">
+            Women
+          </h2>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-center items-center">
+    <div
+      class="p-4 rounded min-h-[12rem] hover:shadow-lg transition bg-[url('https://i.postimg.cc/9Qy4nttL/108102ee-4b10-4a14-bca9-74e4c15bde5c.png')] bg-cover bg-center w-full max-w-sm px-4"
+    >
+      <a [routerLink]="'child'">
+        <h2 class="text-xl text-white pt-12 font-semibold text-center">
+          Child
+        </h2>
       </a>
     </div>
-    <div
-      class="p-4 border rounded-xl shadow hover:shadow-lg min-h-[20rem] transition bg-[url('https://i.postimg.cc/fkQL8cYm/32785d81-8927-4a0d-bead-87fbbc7a3ab0.png')] bg-cover bg-center"
-    >
-      <a [routerLink]="'semi-formals'">
-        <h2 class="text-xl text-white pt-14 font-semibold text-center">Semi Formals</h2>
-      </a>
+  </div>
+
+  <div class="p-16 h-">
+    <div class="bg-white w-5/6  rounded-lg shadow-lg">
+      <!-- Main Card -->
+      <div class="flex -space-x-20 items-center">
+        <!-- Image Section -->
+        <div class="w-1/2">
+          <img
+            src="https://via.placeholder.com/"
+            alt="Product"
+            class="rounded-lg object-cover w-full"
+          />
+        </div>
+
+        <!-- Text Section -->
+        <div class="w-2/3 text-white bg-[#55694B]">
+          <h2 class="text-lg m-11 pl-5 font-semibold">New Arrival</h2>
+          <p class="text-sm m-11 font-semibold pl-5 text-white">
+            A Ethnics wear is <br />what you need for this festival
+          </p>
+          <div class="pl-5 rounded-full m-11 text-center ">
+            <p class="text-lg rounded-full  text-black bg-white  w-10 font-bold mt-2">
+              ₹55
+            </p>
+          </div>
+          <!-- Small Cards Section -->
+          <div class="flex justify-around mt-6 pb-16 ">
+            <img
+              src="https://via.placeholder.com/60"
+              alt="Image 1"
+              class="w-16 h-16 rounded-lg object-cover"
+            />
+            <img
+              src="https://via.placeholder.com/60"
+              alt="Image 2"
+              class="w-16 h-16 rounded-lg object-cover"
+            />
+            <img
+              src="https://via.placeholder.com/60"
+              alt="Image 3"
+              class="w-16 h-16 rounded-lg object-cover"
+            />
+            <!-- Button Section -->
+            <div class="text-center mt-4">
+              <button
+                class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none"
+              >
+                Add to Bag
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Ethnic Collection Section -->
-<div class="flex justify-center items-center">
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8 w-full max-w-8xl px-4">
-    <div
-      class="p-4 border rounded-xl shadow hover:shadow-lg min-h-[18rem] transition bg-[url('https://i.postimg.cc/LhdKdR4Z/a6f76422-c41e-4d0b-8c69-3bb48e5d660e.png')] bg-cover bg-center"
-    >
-      <a [routerLink]="'ethnics'">
-        <h2 class="text-xl text-white pt-24 font-semibold text-center">Ethnics</h2>
-      </a>
+<div class="bg-[#FFA600] overflow-hidden relative h-28">
+  <div class="text-white space-x-5 text-3xl whitespace-nowrap animate-scroll">
+    Flat 50% offer on your first order
+  </div>
+  <div class="text-white text-3xl whitespace-nowrap animate-scroll">
+    Flat 50% offer on your first order
+  </div>
+</div>
+
+<div class="p-8 bg-gray-100">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <!-- Card 1: Best Seller -->
+    <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+      <h2 class="text-lg font-semibold text-gray-800">Best Seller</h2>
+      <p class="text-gray-600 mt-2">Explore our top-selling products loved by our customers.</p>
+      <button class="bg-[#FFA600] text-white mt-4 py-2 px-4 rounded-lg hover:bg-[#cc8400]">
+        Shop Now
+      </button>
     </div>
-    <div
-      class="p-4 border rounded-xl shadow hover:shadow-lg min-h-[16rem] transition bg-[url('https://i.postimg.cc/N0y0wGBd/ef87487a-8e13-46b0-a8a0-6ad9b63f21fe.png')] bg-cover bg-center"
-    >
-      <a [routerLink]="'luxe-ethnics'">
-        <h2 class="text-xl text-white pt-24 font-semibold text-center">Luxe Ethnic</h2>
-      </a>
+
+    <!-- Card 2: New Arrivals -->
+    <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+      <h2 class="text-lg font-semibold text-gray-800">New Arrivals</h2>
+      <p class="text-gray-600 mt-2">Check out the latest additions to our collection.</p>
+      <button class="bg-[#FFA600] text-white mt-4 py-2 px-4 rounded-lg hover:bg-[#cc8400]">
+        Explore
+      </button>
     </div>
-    <div
-      class="p-4 border rounded-xl shadow hover:shadow-lg min-h-[16rem] transition bg-[url('https://i.postimg.cc/rp5v47J8/45154480-bf42-4329-acc3-ee6d95765dbb.png')] bg-cover bg-center"
-    >
-      <a [routerLink]="'daily-ethnics'">
-        <h2 class="text-xl text-white pt-24 font-semibold text-center">Daily Ethnics</h2>
-      </a>
+
+    <!-- Card 3: Our Best Picks -->
+    <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+      <h2 class="text-lg font-semibold text-gray-800">Our Best Picks</h2>
+      <p class="text-gray-600 mt-2">Handpicked items curated just for you.</p>
+      <button class="bg-[#FFA600] text-white mt-4 py-2 px-4 rounded-lg hover:bg-[#cc8400]">
+        View Picks
+      </button>
+    </div>
+
+    <!-- Card 4: Coupon Offers -->
+    <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+      <h2 class="text-lg font-semibold text-gray-800">Coupon Offers</h2>
+      <p class="text-gray-600 mt-2">Save big with exclusive discounts and deals.</p>
+      <button class="bg-[#FFA600] text-white mt-4 py-2 px-4 rounded-lg hover:bg-[#cc8400]">
+        Grab Coupons
+      </button>
     </div>
   </div>
 </div>
 
-<!-- Men, Women, and Child Section -->
-<div class="flex justify-center items-center">
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 w-full max-w-2xl px-4">
-    <div
-      class="p-4 rounded  min-h-[13rem] hover:shadow-lg transition bg-[url('https://i.postimg.cc/bw56mPgx/8be5b2a8-2124-492e-8109-c9e181865e14.png')] bg-cover bg-center"
-    >
-      <a [routerLink]="'men'">
-        <h2 class="text-xl text-white pt-12 font-semibold text-center">Men</h2>
-      </a>
-    </div>
-    <div
-      class="p-4 rounded min-h-[9rem] hover:shadow-lg transition bg-[url('https://i.postimg.cc/xjg3sYTX/cc2f3b16-5961-42a0-bce9-b9453c194a4e.png')] bg-cover bg-center"
-    >
-      <a [routerLink]="'women'">
-        <h2 class="text-xl text-white pt-12 font-semibold text-center">Women</h2>
-      </a>
-    </div>
-  </div>
-</div>
-<div class="flex justify-center items-center">
-  <div
-    class="p-4 rounded min-h-[12rem] hover:shadow-lg transition bg-[url('https://i.postimg.cc/9Qy4nttL/108102ee-4b10-4a14-bca9-74e4c15bde5c.png')] bg-cover bg-center w-full max-w-sm px-4"
-  >
-    <a [routerLink]="'child'">
-      <h2 class="text-xl text-white pt-12 font-semibold text-center">Child</h2>
-    </a>
-  </div>
-</div>

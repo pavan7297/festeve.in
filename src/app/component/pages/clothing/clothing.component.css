@@ -1,0 +1,17 @@
+@keyframes scroll {
+    0% {
+      transform: translateX(100%); /* Start off-screen to the right */
+    }
+    100% {
+      transform: translateX(-100%); /* End off-screen to the left */
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 10s linear infinite;
+    display: inline-block;
+    padding: 2rem 2rem;
+    /* font-size: 1.25rem; Text size: lg */
+    /* font-weight: bold; */
+    white-space: nowrap;
+  }
