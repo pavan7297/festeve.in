@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import {MatSliderModule} from '@angular/material/slider';
 
 @Component({
   selector: 'app-formals',
-  imports: [CommonModule],
+  imports: [CommonModule,MatSliderModule],
   templateUrl: './formals.component.html',
   styleUrl: './formals.component.css'
 })

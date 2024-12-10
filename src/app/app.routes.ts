@@ -17,6 +17,7 @@ import { MenComponent } from './component/pages/sub-pages/men/men.component';
 import { WomenComponent } from './component/pages/sub-pages/women/women.component';
 import { ChildComponent } from './component/pages/sub-pages/child/child.component';
 import { ProductDetailComponent } from './component/pages/sub-pages/product-detail/product-detail.component';
+import { LoginComponent } from './component/const/login/login.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,6 +30,7 @@ export const routes: Routes = [
   { path: 'sliders', component: SliderComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'signup2', component: Signup2Component },
+  { path: 'login', component: LoginComponent },
   { path: 'clothing/Formals', component: FormalsComponent },
   { path: 'clothing/semi-formals', component: SemiformalsComponent },
   { path: 'clothing/ethnics', component: EthnicsComponent },
