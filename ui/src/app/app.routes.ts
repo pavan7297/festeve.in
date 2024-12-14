@@ -18,6 +18,7 @@ import { WomenComponent } from './component/pages/sub-pages/women/women.componen
 import { ChildComponent } from './component/pages/sub-pages/child/child.component';
 import { ProductDetailComponent } from './component/pages/sub-pages/product-detail/product-detail.component';
 import { LoginComponent } from './component/const/login/login.component';
+import { UserdashboardComponent } from './component/const/userdashboard/userdashboard.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -40,4 +41,5 @@ export const routes: Routes = [
   { path: 'clothing/women', component: WomenComponent },
   { path: 'clothing/child', component: ChildComponent },
   { path: 'product/:id', component: ProductDetailComponent },
+  { path: 'Dashboard', component: UserdashboardComponent },
 ];
