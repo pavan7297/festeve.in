@@ -11,7 +11,7 @@ module.exports = {
         'fcardt':'#00000066',
       },
       backgroundImage:{
-       'hero-pattern': "url('/assets/min1.png')",
+      //  'hero-pattern': "url('/assets/icons/poster.png')",
       }
     },
   },

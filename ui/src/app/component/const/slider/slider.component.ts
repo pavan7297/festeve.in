@@ -18,21 +18,21 @@ export class SliderComponent implements OnInit {
   ngOnInit(): void {
     // this.fetchImages();
     this.images = [
-      { url: 'https://picsum.photos/id/237/200/300', title: 'Image 1' },
-      { url: 'https://picsum.photos/seed/picsum/200/300', title: 'Image 2' },
-      { url: 'https://picsum.photos/200/300?grayscale', title: 'Image 3' },
+      { url: 'assets/banner/b1.png', title: 'Image 1' },
+      { url: 'assets/banner/b2.png', title: 'Image 2' },
+      { url: 'assets/banner/b3.png', title: 'Image 3' },
     ];
     this.startAutoSlide();
   }
 
-  fetchImages(): void {
-    // Replace this URL with your backend endpoint
-    this.http
-      .get<{ url: string; title?: string }[]>('https://images.pexels.com/photos/28370142/pexels-photo-28370142/free-photo-of-a-couple-riding-a-scooter-on-the-beach.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')
-      .subscribe((data) => {
-        this.images = data;
-      });
-  }
+  // fetchImages(): void {
+  //   // Replace this URL with your backend endpoint
+  //   this.http
+  //     .get<{ url: string; title?: string }[]>('https://images.pexels.com/photos/28370142/pexels-photo-28370142/free-photo-of-a-couple-riding-a-scooter-on-the-beach.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')
+  //     .subscribe((data) => {
+  //       this.images = data;
+  //     });
+  // }
 
   previousSlide(): void {
     this.currentIndex =
@@ -50,7 +50,7 @@ export class SliderComponent implements OnInit {
   startAutoSlide(): void {
     this.autoSlideInterval = setInterval(() => {
       this.nextSlide();
-    }, 3000); // Change slide every 3 seconds
+    }, 4500); // Change slide every 3 seconds
   }
 
   ngOnDestroy(): void {
