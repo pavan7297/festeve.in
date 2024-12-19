@@ -19,6 +19,7 @@ import { ChildComponent } from './component/pages/sub-pages/child/child.componen
 import { ProductDetailComponent } from './component/pages/sub-pages/product-detail/product-detail.component';
 import { LoginComponent } from './component/const/login/login.component';
 import { UserdashboardComponent } from './component/const/userdashboard/userdashboard.component';
+import { Footer1Component } from './component/const/footer1/footer1.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -42,4 +43,5 @@ export const routes: Routes = [
   { path: 'clothing/child', component: ChildComponent },
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'Dashboard', component: UserdashboardComponent },
+  { path: 'footer', component: Footer1Component },
 ];

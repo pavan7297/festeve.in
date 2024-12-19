@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { SliderComponent } from '../../const/slider/slider.component';
 
 @Component({
   selector: 'app-essentials',
-  imports: [],
+  imports: [SliderComponent],
   templateUrl: './essentials.component.html',
   styleUrl: './essentials.component.css'
 })

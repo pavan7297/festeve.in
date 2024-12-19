@@ -4,30 +4,34 @@
     <app-slider></app-slider>
   </div>
 
-  <div class="py-7">
+  <div class="py-5">
     <div class="text-center py-6">
       <h1 class="text-lime-700 text-3xl sm:text-4xl">What's today</h1>
     </div>
   </div>
 
   <!-- Intro Section -->
-  <div class="py-7 h-lvh items-center justify-center bg-inherit  bg-[url('assets/icons/poster.png')] bg-no-repeat ">
+  <div
+    class="py-4 h-screen items-center justify-center bg-inherit bg-[url('assets/icons/poster.png')] bg-no-repeat bg-center"
+  >
     <div class="container">
       <div
-        class="flex flex-col sm:flex-row justify-between items-center px-6 sm:px-12 lg:px-96"
+        class="pt-64 mx-56 flex flex-col sm:flex-row justify-between items-center px-6 sm:px-12 lg:px-32"
       >
         <div>
-          <h1 class="text-lg sm:text-xl">01, August</h1>
+          <h1 class="text-lg sm:text-xl lg:text-2xl">01, August</h1>
         </div>
         <div>
-          <h1 class="text-lg sm:text-xl">2024</h1>
+          <h1 class="text-lg sm:text-xl lg:text-2xl">2024</h1>
         </div>
       </div>
-      <div class="text-center py-5 text-lg sm:text-2xl px-4 sm:px-11">
+      <div
+        class="text-center py-5 text-lg sm:text-2xl px-4 sm:px-11 max-w-3xl mx-auto"
+      >
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing
-          elit, sed do eiusmod tempor
+          elit, sed do eiusmod tempor.
         </p>
       </div>
     </div>
@@ -191,37 +195,113 @@
         Featured <span class="font-bold">Categories</span>
       </h1>
     </div>
-    <div class="flex flex-col sm:flex-row sm:h-72 gap-4 mt-4">
-      <!-- Card 1 -->
+    <div class="flex flex-col sm:flex-row sm:h-72 gap-2 mt-4">
+      <!-- Card 1 (Default Hover State)-->
       <div
-        class="flex-grow transition-all duration-300 cursor-pointer group hover:flex-[3] bg-gray-100 rounded shadow p-4"
+        class="flex-[3] transition-all duration-300 cursor-pointer group bg-gray-100 rounded shadow p-4 relative bg-[url('assets/images/slidefood.jpg')] bg-cover bg-center bg-no-repeat"
       >
         <p
-          class="transform rotate-90 group-hover:rotate-0 text-lg font-bold mt-4 transition-transform duration-300 text-center text-sm sm:text-base"
+          class="absolute text-white bottom-0 right-0 transform rotate-0 text-lg font-bold transition-transform duration-300 text-sm sm:text-base p-2"
         >
-          Category 1
+          Food
         </p>
       </div>
-      <!-- Card 2 -->
+
+      <!-- Card 2  -->
       <div
-        class="flex-grow transition-all duration-300 cursor-pointer group hover:flex-[3] bg-gray-100 rounded shadow p-4"
+        class="flex-[1] transition-all duration-300 cursor-pointer group hover:flex-[3] bg-gray-100 rounded shadow p-4 relative bg-[url('assets/images/slidecloths.jpg')] bg-cover bg-center bg-no-repeat"
       >
         <p
-          class="transform rotate-90 group-hover:rotate-0 text-lg font-bold mt-4 transition-transform duration-300 text-center text-sm sm:text-base"
+          class="absolute bottom-0 text-white right-0 transform rotate-90 group-hover:rotate-0 text-lg font-bold transition-transform duration-300 text-sm sm:text-base pb-16 pr-8"
         >
-          Category 2
+          Clothing
         </p>
       </div>
+
       <!-- Card 3 -->
       <div
-        class="flex-grow transition-all duration-300 cursor-pointer group hover:flex-[3] bg-gray-100 rounded shadow p-4"
+        class="flex-[1] transition-all duration-300 cursor-pointer group hover:flex-[3] bg-gray-100 rounded shadow p-4 relative bg-[url('assets/images/slideess.jpg')] bg-cover bg-center bg-no-repeat"
       >
         <p
-          class="transform rotate-90 group-hover:rotate-0 text-lg font-bold mt-4 transition-transform duration-300 text-center text-sm sm:text-base"
+          class="absolute text-white bottom-0 right-0 transform rotate-90 group-hover:rotate-0 text-lg font-bold transition-transform duration-300 text-sm sm:text-base pb-16 pr-8"
         >
-          Category 3
+          Essentials
         </p>
       </div>
     </div>
   </div>
 </div>
+
+<div>
+  <div class="p-8 max-w-7xl mx-auto">
+    <!-- Header Section -->
+    <div class="flex justify-between items-center mb-6">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-800">
+          Trending Products <br />
+          <span class="font-normal">for you!</span>
+        </h1>
+      </div>
+      <button class="flex items-center px-5 py-2 bg-green-700 text-white rounded hover:bg-green-600">
+        Explore &nbsp; →
+      </button>
+    </div>
+
+    <!-- Categories -->
+    <div class="flex space-x-8 mb-6 text-gray-500">
+      <button
+        (click)="filterProducts('Food')"
+        [class.text-gray-800]="selectedCategory === 'Food'"
+        [class.border-b-2]="selectedCategory === 'Food'"
+        class="hover:text-gray-800"
+      >
+        Food
+      </button>
+      <button
+        (click)="filterProducts('Clothing')"
+        [class.text-gray-800]="selectedCategory === 'Clothing'"
+        [class.border-b-2]="selectedCategory === 'Clothing'"
+        class="hover:text-gray-800"
+      >
+        Clothing
+      </button>
+      <button
+        (click)="filterProducts('Essentials')"
+        [class.text-gray-800]="selectedCategory === 'Essentials'"
+        [class.border-b-2]="selectedCategory === 'Essentials'"
+        class="font-semibold border-b-2 border-gray-800 text-gray-800"
+      >
+        Essentials
+      </button>
+      <button
+        (click)="filterProducts('Gifting')"
+        [class.text-gray-800]="selectedCategory === 'Gifting'"
+        [class.border-b-2]="selectedCategory === 'Gifting'"
+        class="hover:text-gray-800"
+      >
+        Gifting
+      </button>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Product Cards based on selected category -->
+      <div *ngFor="let product of filteredProducts" class="relative">
+        <img [src]="product.img" alt="Product Image" class="w-full h-56 object-cover rounded-lg" />
+        <div class="absolute inset-0 bg-green-900 opacity-30 rounded-lg"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+          <h2 class="font-semibold">{{ product.name }}</h2>
+          <p>{{ product.price }}</p>
+        </div>
+        <div class="absolute bottom-4 right-4 text-white text-xl">
+          🛒
+        </div>
+        <div class="absolute top-4 right-4 text-white">
+          ♥
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer1></app-footer1>
