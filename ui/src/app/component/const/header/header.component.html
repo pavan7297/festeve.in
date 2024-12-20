@@ -30,7 +30,7 @@
     </button>
 
     <!-- Navigation Links -->
-    <ul class="hidden lg:flex space-x-6 text-gray-700 font-medium">
+    <ul class="hidden lg:flex space-x-9 text-gray-700 text-lg font-semibold">
       <li>
         <a
           [routerLink]="'Home'"
@@ -162,8 +162,8 @@
           </svg>
         </a>
       </li>
-      <li>
-        <a href=""
+      <li (click)="getLocation()">
+        <a 
           ><svg
             width="23"
             height="27"
@@ -219,7 +219,7 @@
       </li>
 
       <button
-        class="bg-tgreen px-3 rounded-full text-white"
+        class=" px-3 rounded-full hover:text-tgreen"
         (click)="gotologin()"
       >
         Login
