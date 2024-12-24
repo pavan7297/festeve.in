@@ -28,7 +28,158 @@ https://www.figma.com/design/04nXi8KBaWfNbGFR55IPwy/Untitled?node-id=62-647&t=e3
       
 	  
 	banner sizes (1200*300)
-	
+
+**************************************************************************************************************************************************************************************
+
+
+{
+  "categories": [
+    {
+      "name": "Men",
+      "subcategories": [
+        {
+          "name": "Formals",
+          "items": [
+            {
+              "productName": "Men's Formal Shirt",
+              "productPrice": 1299,
+              "productRating": 4.5,
+              "productSizesAvailable": ["S", "M", "L", "XL"]
+            },
+            {
+              "productName": "Men's Formal Pants",
+              "productPrice": 1599,
+              "productRating": 4.2,
+              "productSizesAvailable": ["M", "L", "XL", "XXL"]
+            }
+          ]
+        },
+        {
+          "name": "Semi Formals",
+          "items": []
+        },
+        {
+          "name": "Ethnic",
+          "items": []
+        },
+        {
+          "name": "Luxe Ethnic",
+          "items": []
+        },
+        {
+          "name": "Daily Ethnic",
+          "items": []
+        }
+      ]
+    },
+    {
+      "name": "Women",
+      "subcategories": [
+        {
+          "name": "Formals",
+          "items": [
+            {
+              "productName": "Women's Formal Blazer",
+              "productPrice": 2299,
+              "productRating": 4.8,
+              "productSizesAvailable": ["XS", "S", "M", "L"]
+            }
+          ]
+        },
+        {
+          "name": "Semi Formals",
+          "items": []
+        },
+        {
+          "name": "Ethnic",
+          "items": []
+        },
+        {
+          "name": "Luxe Ethnic",
+          "items": []
+        },
+        {
+          "name": "Daily Ethnic",
+          "items": []
+        }
+      ]
+    },
+    {
+      "name": "Child",
+      "subcategories": [
+        {
+          "name": "Formals",
+          "items": [
+            {
+              "productName": "Kid's Formal Shirt",
+              "productPrice": 899,
+              "productRating": 4.3,
+              "productSizesAvailable": ["XS", "S", "M"]
+            }
+          ]
+        },
+        {
+          "name": "Semi Formals",
+          "items": []
+        },
+        {
+          "name": "Ethnic",
+          "items": []
+        },
+        {
+          "name": "Luxe Ethnic",
+          "items": []
+        },
+        {
+          "name": "Daily Ethnic",
+          "items": []
+        }
+      ]
+    }
+  ]
+}
+
+------------------------------------------------
+
+---------------------------------------------------
+
+-- Table: Categories
+CREATE TABLE Categories (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL
+);
+
+-- Table: Subcategories
+CREATE TABLE Subcategories (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    category_id INT NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES Categories(id) ON DELETE CASCADE
+);
+
+-- Table: Products
+CREATE TABLE Products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    rating DECIMAL(3, 2) CHECK (rating BETWEEN 0 AND 5),
+    availability BOOLEAN NOT NULL DEFAULT TRUE,
+    subcategory_id INT NOT NULL,
+    FOREIGN KEY (subcategory_id) REFERENCES Subcategories(id) ON DELETE CASCADE
+);
+
+-- Table: Product Sizes
+CREATE TABLE ProductSizes (
+    id SERIAL PRIMARY KEY,
+    size VARCHAR(10) NOT NULL,
+    product_id INT NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES Products(id) ON DELETE CASCADE
+);
+
+
+
+
+
 	
 
    
