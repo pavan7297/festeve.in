@@ -139,9 +139,9 @@ https://www.figma.com/design/04nXi8KBaWfNbGFR55IPwy/Untitled?node-id=62-647&t=e3
   ]
 }
 
-------------------------------------------------
-
----------------------------------------------------
+*********************************************************************************************************************************************************************************************
+																					producr table 
+*********************************************************************************************************************************************************************************************
 
 -- Table: Categories
 CREATE TABLE Categories (
@@ -177,8 +177,257 @@ CREATE TABLE ProductSizes (
 );
 
 
+CREATE OR REPLACE FUNCTION add_category(categoryName VARCHAR)
+RETURNS VOID AS $$
+BEGIN
+    INSERT INTO Categories (name)
+    VALUES (categoryName);
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT add_category('Men');
+
+CREATE OR REPLACE FUNCTION add_subcategory(subcategoryName VARCHAR, categoryId INT)
+RETURNS VOID AS $$
+BEGIN
+    INSERT INTO Subcategories (name, category_id)
+    VALUES (subcategoryName, categoryId);
+END;
+$$ LANGUAGE plpgsql;
 
 
+SELECT add_subcategory('Ethnic', 1); -- Subcategory name, category ID
+
+
+CREATE OR REPLACE FUNCTION add_product(
+    productName VARCHAR,
+    productPrice DECIMAL,
+    productRating DECIMAL,
+    productAvailability BOOLEAN,
+    subcategoryId INT
+)
+RETURNS VOID AS $$
+BEGIN
+    INSERT INTO Products (name, price, rating, availability, subcategory_id)
+    VALUES (productName, productPrice, productRating, productAvailability, subcategoryId);
+END;
+$$ LANGUAGE plpgsql;
+
+
+SELECT add_product('Slim Fit Shirt', 1299, 4.5, TRUE, 1);
+
+
+CREATE OR REPLACE FUNCTION add_product_size(size VARCHAR, productId INT)
+RETURNS VOID AS $$
+BEGIN
+    INSERT INTO ProductSizes (size, product_id)
+    VALUES (size, productId);
+END;
+$$ LANGUAGE plpgsql;
+
+
+
+SELECT add_product_size('L', 1); -- Size and product ID
+
+
+CREATE OR REPLACE FUNCTION update_category(categoryId INT, newName VARCHAR)
+RETURNS VOID AS $$
+BEGIN
+    UPDATE Categories
+    SET name = newName
+    WHERE id = categoryId;
+END;
+$$ LANGUAGE plpgsql;
+
+
+SELECT update_category(1, 'Updated Men');
+
+
+CREATE OR REPLACE FUNCTION update_product(
+    productId INT,
+    newName VARCHAR,
+    newPrice DECIMAL,
+    newRating DECIMAL,
+    newAvailability BOOLEAN
+)
+RETURNS VOID AS $$
+BEGIN
+    UPDATE Products
+    SET name = newName,
+        price = newPrice,
+        rating = newRating,
+        availability = newAvailability
+    WHERE id = productId;
+END;
+$$ LANGUAGE plpgsql;
+
+
+SELECT update_product(1, 'Updated Slim Fit Shirt', 1499, 4.8, TRUE);
+
+
+CREATE OR REPLACE FUNCTION delete_category(categoryId INT)
+RETURNS VOID AS $$
+BEGIN
+    DELETE FROM Categories
+    WHERE id = categoryId;
+END;
+$$ LANGUAGE plpgsql;
+
+
+SELECT delete_category(1); -- Deletes the "Men" category and related subcategories/products
+
+
+CREATE OR REPLACE FUNCTION delete_product(productId INT)
+RETURNS VOID AS $$
+BEGIN
+    DELETE FROM Products
+    WHERE id = productId;
+END;
+$$ LANGUAGE plpgsql;
+
+
+SELECT delete_product(1); -- Deletes the product with ID 1
+
+
+CREATE OR REPLACE FUNCTION delete_subcategory(subcategoryId INT)
+RETURNS VOID AS $$
+BEGIN
+    DELETE FROM Subcategories
+    WHERE id = subcategoryId;
+END;
+$$ LANGUAGE plpgsql;
+
+
+SELECT delete_subcategory(1); -- Deletes subcategory with ID 1
+
+
+CREATE OR REPLACE FUNCTION get_all_categories()
+RETURNS JSONB AS $$
+BEGIN
+    RETURN (
+        SELECT jsonb_agg(jsonb_build_object('id', id, 'name', name))
+        FROM Categories
+    );
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_subcategories_by_category(categoryId INT)
+RETURNS JSONB AS $$
+BEGIN
+    RETURN (
+        SELECT jsonb_agg(jsonb_build_object('id', id, 'name', name))
+        FROM Subcategories
+        WHERE category_id = categoryId
+    );
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_products_by_subcategory(subcategoryId INT)
+RETURNS JSONB AS $$
+BEGIN
+    RETURN (
+        SELECT jsonb_agg(
+            jsonb_build_object(
+                'id', id,
+                'name', name,
+                'price', price,
+                'rating', rating,
+                'availability', availability
+            )
+        )
+        FROM Products
+        WHERE subcategory_id = subcategoryId
+    );
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_product_details(productId INT)
+RETURNS JSONB AS $$
+BEGIN
+    RETURN (
+        SELECT jsonb_build_object(
+            'id', p.id,
+            'name', p.name,
+            'price', p.price,
+            'rating', p.rating,
+            'availability', p.availability,
+            'sizes', (
+                SELECT jsonb_agg(size)
+                FROM ProductSizes
+                WHERE product_id = p.id
+            )
+        )
+        FROM Products p
+        WHERE p.id = productId
+    );
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_full_structure()
+RETURNS JSONB AS $$
+BEGIN
+    RETURN (
+        SELECT jsonb_agg(
+            jsonb_build_object(
+                'category', c.name,
+                'subcategories', (
+                    SELECT jsonb_agg(
+                        jsonb_build_object(
+                            'subcategory', sc.name,
+                            'products', (
+                                SELECT jsonb_agg(
+                                    jsonb_build_object(
+                                        'productName', p.name,
+                                        'productPrice', p.price,
+                                        'productRating', p.rating,
+                                        'productAvailability', p.availability,
+                                        'productSizes', (
+                                            SELECT jsonb_agg(size)
+                                            FROM ProductSizes
+                                            WHERE product_id = p.id
+                                        )
+                                    )
+                                )
+                                FROM Products p
+                                WHERE p.subcategory_id = sc.id
+                            )
+                        )
+                    )
+                    FROM Subcategories sc
+                    WHERE sc.category_id = c.id
+                )
+            )
+        )
+        FROM Categories c
+    );
+END;
+$$ LANGUAGE plpgsql;
+
+
+SELECT get_all_categories();
+
+
+SELECT get_subcategories_by_category(1); -- Pass category ID
+
+
+SELECT get_products_by_subcategory(1); -- Pass subcategory ID
+
+
+SELECT get_product_details(1); -- Pass product ID
+
+
+SELECT get_full_structure();
+
+
+
+
+*********************************************************************************************************************************************************************************************
+
+*********************************************************************************************************************************************************************************************
 
 	
 
