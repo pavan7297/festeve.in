@@ -1,0 +1,88 @@
+<div class="p-6 bg-gray-100 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6">Purohit Management</h1>
+  
+    <!-- Add Purohit Form -->
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-6">
+      <h2 class="text-xl font-semibold mb-4">Add New Purohit</h2>
+      <form id="addPurohitForm">
+        <div class="mb-4">
+          <label for="purohitName" class="block text-gray-700 font-bold mb-2">Name</label>
+          <input
+            type="text"
+            id="purohitName"
+            placeholder="Enter purohit name"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="purohitExpertise" class="block text-gray-700 font-bold mb-2">Expertise</label>
+          <input
+            type="text"
+            id="purohitExpertise"
+            placeholder="Enter purohit expertise"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="purohitContact" class="block text-gray-700 font-bold mb-2">Contact</label>
+          <input
+            type="text"
+            id="purohitContact"
+            placeholder="Enter purohit contact"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="purohitPrice" class="block text-gray-700 font-bold mb-2">Pricing</label>
+          <input
+            type="number"
+            id="purohitPrice"
+            placeholder="Enter pricing"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <button
+          type="button"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          (click)="addPurohit()"
+        >
+          Add Purohit
+        </button>
+      </form>
+    </div>
+  
+    <!-- Purohit List Table -->
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8">
+      <h2 class="text-xl font-semibold mb-4">Purohit List</h2>
+      <table class="table-auto w-full border-collapse border border-gray-300">
+        <thead>
+          <tr>
+            <th class="border border-gray-300 px-4 py-2">ID</th>
+            <th class="border border-gray-300 px-4 py-2">Name</th>
+            <th class="border border-gray-300 px-4 py-2">Expertise</th>
+            <th class="border border-gray-300 px-4 py-2">Contact</th>
+            <th class="border border-gray-300 px-4 py-2">Pricing</th>
+            <th class="border border-gray-300 px-4 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let purohit of purohits">
+            <td class="border border-gray-300 px-4 py-2">{{ purohit.id }}</td>
+            <td class="border border-gray-300 px-4 py-2">{{ purohit.name }}</td>
+            <!-- <td class="border border-gray-300 px-4 py-2">{{ purohit.expertise }}</td> -->
+            <td class="border border-gray-300 px-4 py-2">{{ purohit.contact }}</td>
+            <!-- <td class="border border-gray-300 px-4 py-2">{{ purohit.price }}</td> -->
+            <td class="border border-gray-300 px-4 py-2">
+              <button
+                class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded focus:outline-none focus:shadow-outline"
+                (click)="deletePurohit(purohit.id)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

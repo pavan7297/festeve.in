@@ -1,0 +1,81 @@
+<div class="p-6">
+    <h1 class="text-2xl font-bold mb-4">Essentials Management</h1>
+    <button
+      class="bg-green-500 text-white px-4 py-2 rounded"
+      (click)="showAddEssentialForm = true"
+    >
+      Add Essential
+    </button>
+  
+    <div *ngIf="showAddEssentialForm" class="mt-4 p-4 border border-gray-300 rounded">
+      <h2 class="text-xl font-semibold mb-3">Add New Essential</h2>
+      <form (ngSubmit)="addEssential()">
+        <div class="mb-4">
+          <label class="block text-gray-700">Essential Name</label>
+          <input
+            type="text"
+            [(ngModel)]="essentialName"
+            class="w-full border rounded px-3 py-2"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Type</label>
+          <input
+            type="text"
+            [(ngModel)]="essentialType"
+            class="w-full border rounded px-3 py-2"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Price</label>
+          <input
+            type="number"
+            [(ngModel)]="essentialPrice"
+            class="w-full border rounded px-3 py-2"
+            required
+          />
+        </div>
+        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">
+          Add
+        </button>
+      </form>
+    </div>
+  
+    <div class="mt-6">
+      <h2 class="text-xl font-semibold mb-3">Essential List</h2>
+      <table class="min-w-full border border-gray-300">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="p-2 border">Name</th>
+            <th class="p-2 border">Type</th>
+            <th class="p-2 border">Price</th>
+            <th class="p-2 border">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let essential of essentials">
+            <td class="p-2 border">{{ essential.name }}</td>
+            <td class="p-2 border">{{ essential.type }}</td>
+            <td class="p-2 border">{{ essential.price }}</td>
+            <td class="p-2 border">
+              <button
+                class="bg-yellow-500 text-white px-2 py-1 rounded"
+                (click)="editEssential(essential)"
+              >
+                Edit
+              </button>
+              <button
+                class="bg-red-500 text-white px-2 py-1 rounded"
+                (click)="deleteEssential(essential.id)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

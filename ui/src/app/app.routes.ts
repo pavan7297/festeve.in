@@ -20,9 +20,13 @@ import { ProductDetailComponent } from './component/pages/sub-pages/product-deta
 import { LoginComponent } from './component/const/login/login.component';
 import { UserdashboardComponent } from './component/const/userdashboard/userdashboard.component';
 import { Footer1Component } from './component/const/footer1/footer1.component';
+import { SuperAdminDashboardComponent } from './component/const/super-admin-dashboard/super-admin-dashboard.component';
+import { ProductManagementScreenComponent } from './component/Dashboards/product-management-screen/product-management-screen.component';
+import { EssentialsManagementScreenComponent } from './component/Dashboards/essentials-management-screen/essentials-management-screen.component';
+import { PurohitManagementScrrenComponent } from './component/Dashboards/purohit-management-scrren/purohit-management-scrren.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: '/Home', pathMatch: 'full' },
   { path: 'Home', component: HomeComponent },
   { path: 'Purohit', component: PurohitComponent },
   { path: 'clothing', component: ClothingComponent },
@@ -43,5 +47,9 @@ export const routes: Routes = [
   { path: 'clothing/child', component: ChildComponent },
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'Dashboard', component: UserdashboardComponent },
+  { path: 'SuperAdmin', component: SuperAdminDashboardComponent },
+  { path: 'manage-products', component: ProductManagementScreenComponent },
+  { path: 'manage-essentials', component: EssentialsManagementScreenComponent },
+  { path: 'manage-purohits', component: PurohitManagementScrrenComponent },
   { path: 'footer', component: Footer1Component },
 ];

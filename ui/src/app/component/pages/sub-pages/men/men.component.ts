@@ -1,26 +1,40 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSliderModule } from '@angular/material/slider';
 import { Router } from '@angular/router';
+import { ProductsService } from '../../../../service/service/products.service';
 
 @Component({
   selector: 'app-men',
-  imports: [CommonModule,MatSliderModule],
+  imports: [CommonModule, MatSliderModule],
   templateUrl: './men.component.html',
-  styleUrl: './men.component.css'
+  styleUrl: './men.component.css',
 })
-export class MenComponent {
-  products = [
-    { id: 1, name: 'Product 1', image: 'https://via.placeholder.com/200' },
-    { id: 2, name: 'Product 2', image: 'https://via.placeholder.com/200' },
-    { id: 3, name: 'Product 3', image: 'https://via.placeholder.com/200' },
-    { id: 4, name: 'Product 4', image: 'https://via.placeholder.com/200' }
-  ];
+export class MenComponent implements OnInit {
+  products: any;
+  errorMessage: string | null = null;
 
-  constructor(private router: Router) {}
+  constructor(private productsService: ProductsService, private router: Router) {}
 
-  goToProductDetail(productId: number) {
-    this.router.navigate([`/product/${productId}`]);
+  ngOnInit() {
+    this.productsService.getMenProducts().subscribe(
+      (data) => {
+        if (data) {
+          this.products = data.mens;
+          console.log('Products:', this.products);
+        } else {
+          this.errorMessage = 'Failed to fetch products.';
+        }
+      },
+      (error) => {
+        this.errorMessage = error.message || 'An error occurred.';
+        console.error('Component Error:', error);
+      }
+    );
   }
 
+  goToProductDetail(product_id: number) {
+    console.log("object"+product_id);
+    this.router.navigate([`/product/${product_id}`]);
+  }
 }

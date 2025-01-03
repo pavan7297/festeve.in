@@ -1,0 +1,80 @@
+<div class="p-6">
+    <h1 class="text-2xl font-bold mb-4">Product Management</h1>
+    <button
+      class="bg-blue-500 text-white px-4 py-2 rounded"
+      (click)="showAddProductForm = true"
+    >
+      Add Product
+    </button>
+  
+    <div *ngIf="showAddProductForm" class="mt-4 p-4 border border-gray-300 rounded">
+      <h2 class="text-xl font-semibold mb-3">Add New Product</h2>
+      <form (ngSubmit)="addProduct()">
+        <div class="mb-4">
+          <label class="block text-gray-700">Product Name</label>
+          <input
+            type="text"
+            [(ngModel)]="productName"
+            class="w-full border rounded px-3 py-2"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Description</label>
+          <textarea
+            [(ngModel)]="productDescription"
+            class="w-full border rounded px-3 py-2"
+            required
+          ></textarea>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Price</label>
+          <input
+            type="number"
+            [(ngModel)]="productPrice"
+            class="w-full border rounded px-3 py-2"
+            required
+          />
+        </div>
+        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">
+          Add
+        </button>
+      </form>
+    </div>
+  
+    <div class="mt-6">
+      <h2 class="text-xl font-semibold mb-3">Product List</h2>
+      <table class="min-w-full border border-gray-300">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="p-2 border">Name</th>
+            <th class="p-2 border">Description</th>
+            <th class="p-2 border">Price</th>
+            <th class="p-2 border">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td class="p-2 border">{{ product.name }}</td>
+            <td class="p-2 border">{{ product.description }}</td>
+            <td class="p-2 border">{{ product.price }}</td>
+            <td class="p-2 border">
+              <button
+                class="bg-yellow-500 text-white px-2 py-1 rounded"
+                (click)="editProduct(product)"
+              >
+                Edit
+              </button>
+              <button
+                class="bg-red-500 text-white px-2 py-1 rounded"
+                (click)="deleteProduct(product.id)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

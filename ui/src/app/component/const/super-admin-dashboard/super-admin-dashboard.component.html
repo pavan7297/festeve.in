@@ -1,0 +1,70 @@
+<div class="min-h-screen bg-gray-100 flex">
+    <!-- Sidebar -->
+    <div class="w-16 bg-white text-white flex flex-col items-center py-6">
+      <!-- Icon Links -->
+      <a href="/dashboard" class="text-2xl mb-6" title="Dashboard">
+        <i class="fas fa-tachometer-alt"></i>
+      </a>
+      <a href="/manage-products" class="text-2xl mb-6" title="Manage Products">
+        <i class="fas fa-cogs"></i>
+      </a>
+      <a href="/manage-essentials" class="text-2xl mb-6" title="Manage Essentials">
+        <i class="fas fa-box-open"></i>
+      </a>
+      <a href="/manage-purohits" class="text-2xl mb-6" title="Manage Purohits">
+        <i class="fas fa-user-shield"></i>
+      </a>
+    </div>
+  
+    <!-- Main Content -->
+    <div class="flex-1 bg-gray-100">
+      <!-- Navbar -->
+      <header class="bg-blue-600 text-white py-4 px-6 flex justify-between items-center">
+        <h1 class="text-3xl font-bold">Admin Dashboard</h1>
+        <div class="flex items-center space-x-4">
+          <a href="#" class="text-xl"><i class="fas fa-user"></i></a>
+          <a href="#" class="text-xl"><i class="fas fa-sign-out-alt"></i></a>
+        </div>
+      </header>
+  
+      <!-- Dashboard Cards -->
+      <div class="p-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white p-6 shadow rounded text-center">
+            <h2 class="text-xl font-bold">Manage Products</h2>
+            <p class="text-gray-600">Add, edit, or delete products.</p>
+            <button
+              class="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
+              routerLink="/manage-products"
+            >
+              Go to Products
+            </button>
+          </div>
+          <div class="bg-white p-6 shadow rounded text-center">
+            <h2 class="text-xl font-bold">Manage Essentials</h2>
+            <p class="text-gray-600">Add, edit, or delete essentials.</p>
+            <button
+              class="mt-4 bg-green-500 text-white px-4 py-2 rounded"
+              routerLink="/manage-essentials"
+            >
+              Go to Essentials
+            </button>
+          </div>
+          <div class="bg-white p-6 shadow rounded text-center">
+            <h2 class="text-xl font-bold">Manage Purohits</h2>
+            <p class="text-gray-600">Add, edit, or delete Purohits.</p>
+            <button
+              class="mt-4 bg-yellow-500 text-white px-4 py-2 rounded"
+              routerLink="/manage-purohits"
+            >
+              Go to Purohits
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Include Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  

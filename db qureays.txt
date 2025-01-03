@@ -1,0 +1,330 @@
+********************************************************************************************************************************************************************
+															tables
+********************************************************************************************************************************************************************
+
+CREATE TABLE Categories (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(50) NOT NULL
+);
+		
+CREATE TABLE Men (
+	id SERIAL PRIMARY KEY,
+	title VARCHAR(100) NOT NULL,
+	price DECIMAL(10, 2) NOT NULL,
+	sizes VARCHAR(10) NOT NULL,
+	rating DECIMAL(3, 2) CHECK (rating BETWEEN 0 AND 5),
+	availability BOOLEAN NOT NULL DEFAULT TRUE,
+	product_description VARCHAR(100) NOT NULL,
+	imgaes VARCHAR(100) NOT NULL,
+	category_id INT NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES Categories(id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE Women (
+	id SERIAL PRIMARY KEY,
+	title VARCHAR(100) NOT NULL,
+	price DECIMAL(10, 2) NOT NULL,
+	sizes VARCHAR(10) NOT NULL,
+	rating DECIMAL(3, 2) CHECK (rating BETWEEN 0 AND 5),
+	availability BOOLEAN NOT NULL DEFAULT TRUE,
+	product_description VARCHAR(100) NOT NULL,
+	imgaes VARCHAR(100) NOT NULL,
+	category_id INT NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES Categories(id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE child (
+	id SERIAL PRIMARY KEY,
+	title VARCHAR(100) NOT NULL,
+	price DECIMAL(10, 2) NOT NULL,
+	sizes VARCHAR(10) NOT NULL,
+	rating DECIMAL(3, 2) CHECK (rating BETWEEN 0 AND 5),
+	availability BOOLEAN NOT NULL DEFAULT TRUE,
+	product_description VARCHAR(100) NOT NULL,
+	imgaes VARCHAR(100) NOT NULL,
+	category_id INT NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES Categories(id) ON DELETE CASCADE
+);
+
+####################################################################################################################################################################
+													functions
+####################################################################################################################################################################
+	
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+																		get functions
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	
+
+CREATE OR REPLACE FUNCTION get_products_men()
+RETURNS TABLE (
+    men_id INT,
+    title VARCHAR,
+    price DECIMAL,
+    sizes VARCHAR,
+    rating DECIMAL,
+    availability BOOLEAN,
+    product_description VARCHAR,
+    images VARCHAR,
+    category_id INT
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT 
+        m.id AS men_id,
+        m.title,
+        m.price,
+        m.sizes,
+        m.rating,
+        m.availability,
+        m.product_description,
+        m.imgaes AS images,
+        m.category_id
+    FROM men m;
+END;
+$$ LANGUAGE plpgsql;
+
+
+
+
+CREATE OR REPLACE FUNCTION get_products_women()
+RETURNS TABLE (
+    men_id INT,
+    title VARCHAR,
+    price DECIMAL,
+    sizes VARCHAR,
+    rating DECIMAL,
+    availability BOOLEAN,
+    product_description VARCHAR,
+    images VARCHAR,
+    category_id INT
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT 
+        m.id AS men_id,
+        m.title,
+        m.price,
+        m.sizes,
+        m.rating,
+        m.availability,
+        m.product_description,
+        m.imgaes AS images,
+        m.category_id
+    FROM women m;
+END;
+$$ LANGUAGE plpgsql;
+
+
+
+
+CREATE OR REPLACE FUNCTION get_products_child()
+RETURNS TABLE (
+    men_id INT,
+    title VARCHAR,
+    price DECIMAL,
+    sizes VARCHAR,
+    rating DECIMAL,
+    availability BOOLEAN,
+    product_description VARCHAR,
+    images VARCHAR,
+    category_id INT
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT 
+        m.id AS men_id,
+        m.title,
+        m.price,
+        m.sizes,
+        m.rating,
+        m.availability,
+        m.product_description,
+        m.imgaes AS images,
+        m.category_id
+    FROM child m;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION get_products_by_category_men_products(category_id_param INT)
+RETURNS TABLE (
+    men_id INT,
+    title VARCHAR,
+    price DECIMAL,
+    sizes VARCHAR,
+    rating DECIMAL,
+    availability BOOLEAN,
+    product_description VARCHAR,
+    images VARCHAR,
+    category_id INT
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT 
+        m.id AS men_id,
+        m.title,
+        m.price,
+        m.sizes,
+        m.rating,
+        m.availability,
+        m.product_description,
+        m.imgaes AS images,
+        m.category_id
+    FROM Men m
+    WHERE m.category_id = category_id_param;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_products_by_category_women_products(category_id_param INT)
+RETURNS TABLE (
+    men_id INT,
+    title VARCHAR,
+    price DECIMAL,
+    sizes VARCHAR,
+    rating DECIMAL,
+    availability BOOLEAN,
+    product_description VARCHAR,
+    images VARCHAR,
+    category_id INT
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT 
+        m.id AS men_id,
+        m.title,
+        m.price,
+        m.sizes,
+        m.rating,
+        m.availability,
+        m.product_description,
+        m.imgaes AS images,
+        m.category_id
+    FROM women m
+    WHERE m.category_id = category_id_param;
+END;
+$$ LANGUAGE plpgsql;
+
+
+
+
+CREATE OR REPLACE FUNCTION get_products_by_category_child_products(category_id_param INT)
+RETURNS TABLE (
+    men_id INT,
+    title VARCHAR,
+    price DECIMAL,
+    sizes VARCHAR,
+    rating DECIMAL,
+    availability BOOLEAN,
+    product_description VARCHAR,
+    images VARCHAR,
+    category_id INT
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT 
+        m.id AS men_id,
+        m.title,
+        m.price,
+        m.sizes,
+        m.rating,
+        m.availability,
+        m.product_description,
+        m.imgaes AS images,
+        m.category_id
+    FROM child m
+    WHERE m.category_id = category_id_param;
+END;
+$$ LANGUAGE plpgsql;
+
+
+	
+	
+	
+	
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+																		post function
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	
+	
+CREATE OR REPLACE FUNCTION add_men(Categories_name VARCHAR)
+RETURNS TEXT AS $$
+BEGIN
+    INSERT INTO Categories (name)
+    VALUES (Categories_name);
+	
+	RETURN 'Categories add to me';
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION add_men(
+product_title VARCHAR, 
+product_price DECIMAL, 
+product_sizes VARCHAR,
+product_rating DECIMAL,
+product_availability BOOLEAN,
+product_description VARCHAR,
+product_imgaes VARCHAR ,
+product_category_id INT)
+RETURNS TEXT AS $$
+BEGIN
+    INSERT INTO Men (title,price,sizes,rating,availability,product_description,imgaes,category_id)
+    VALUES (product_title,product_price,product_sizes,product_rating,product_availability,product_description,product_imgaes,product_category_id);
+	
+	RETURN 'product add to me';
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT add_category('Men');
+
+
+
+CREATE OR REPLACE FUNCTION add_women(
+product_title VARCHAR, 
+product_price DECIMAL, 
+product_sizes VARCHAR,
+product_rating DECIMAL,
+product_availability BOOLEAN,
+product_description VARCHAR,
+product_imgaes VARCHAR ,
+product_category_id INT)
+RETURNS TEXT AS $$
+BEGIN
+    INSERT INTO women (title,price,sizes,rating,availability,product_description,imgaes,category_id)
+    VALUES (product_title,product_price,product_sizes,product_rating,product_availability,product_description,product_imgaes,product_category_id);
+	
+	RETURN 'product add to women';
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION add_child(
+product_title VARCHAR, 
+product_price DECIMAL, 
+product_sizes VARCHAR,
+product_rating DECIMAL,
+product_availability BOOLEAN,
+product_description VARCHAR,
+product_imgaes VARCHAR ,
+product_category_id INT)
+RETURNS TEXT AS $$
+BEGIN
+    INSERT INTO child (title,price,sizes,rating,availability,product_description,imgaes,category_id)
+    VALUES (product_title,product_price,product_sizes,product_rating,product_availability,product_description,product_imgaes,product_category_id);
+	
+	RETURN 'product add to child';
+END;
+$$ LANGUAGE plpgsql;
+
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+																		quearies
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+
