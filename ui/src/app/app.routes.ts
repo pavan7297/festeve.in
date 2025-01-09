@@ -26,13 +26,17 @@ import { EssentialsManagementScreenComponent } from './component/Dashboards/esse
 import { PurohitManagementScrrenComponent } from './component/Dashboards/purohit-management-scrren/purohit-management-scrren.component';
 import { FestevedetailpageComponent } from './component/pages/sub-pages/festevedetailpage/festevedetailpage.component';
 import { AddtocartComponent } from './component/const/addtocart/addtocart.component';
+import { EssentialstotallistComponent } from './component/pages/sub-pages/essentialstotallist/essentialstotallist.component';
+import { EssentialshomeComponent } from './component/pages/sub-pages/essentialshome/essentialshome.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
   { path: 'Home', component: HomeComponent },
   { path: 'Purohit', component: PurohitComponent },
   { path: 'clothing', component: ClothingComponent },
-  { path: 'essentials', component: EssentialsComponent },
+  { path: 'essential', component: EssentialsComponent },
+  { path: 'essentials-list', component: EssentialstotallistComponent },
+  { path: 'essentials', component: EssentialshomeComponent },
   { path: 'about-us', component: AboutusComponent },
   { path: 'contact-us', component: ContactusComponent },
   { path: 'sliders', component: SliderComponent },
