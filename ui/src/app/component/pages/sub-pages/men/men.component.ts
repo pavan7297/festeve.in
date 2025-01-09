@@ -17,10 +17,11 @@ export class MenComponent implements OnInit {
   constructor(private productsService: ProductsService, private router: Router) {}
 
   ngOnInit() {
-    this.productsService.getMenProducts().subscribe(
+    this.productsService.getNodeMenProducts().subscribe(
       (data) => {
         if (data) {
-          this.products = data.mens;
+          // this.products = data.mens;
+          this.products = data;
           console.log('Products:', this.products);
         } else {
           this.errorMessage = 'Failed to fetch products.';
@@ -33,8 +34,8 @@ export class MenComponent implements OnInit {
     );
   }
 
-  goToProductDetail(product_id: number) {
-    console.log("object"+product_id);
-    this.router.navigate([`/product/${product_id}`]);
+  goToProductDetail(_id: number) {
+    console.log("object"+_id);
+    this.router.navigate([`/product/${_id}`]);
   }
 }

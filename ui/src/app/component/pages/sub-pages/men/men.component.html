@@ -27,7 +27,7 @@
   
   <div class="font-semibold px-16 pb-9 text-xl">
     <h1>
-      Ethnic wear for women - <span class="text-gray-500">2000 items </span>
+      Ethnic wear for men - <span class="text-gray-500">2000 items </span>
     </h1>
   </div>
   
@@ -214,7 +214,7 @@
         <div
           *ngFor="let product of products"
           class="max-w-xs rounded-lg shadow-lg overflow-hidden bg-white cursor-pointer"
-          (click)="goToProductDetail(product.product_id)"
+          (click)="goToProductDetail(product._id)"
         >
           <img
             [src]="product.image"
@@ -223,7 +223,7 @@
           />
           <div class="p-4">
             <h3 class="text-lg font-semibold text-gray-700">
-              {{ product.name }}
+              {{ product.productname }}
             </h3>
           </div>
         </div>

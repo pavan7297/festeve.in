@@ -1,7 +1,7 @@
 <div class="p-6 flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6">
   <!-- Left Section: Vertical Thumbnails -->
   <div class="flex flex-col space-y-4 w-full md:w-1/5">
-    <div
+    <!-- <div
       class="block text-black max-w-72 p-6 bg-white border border-gray-200 rounded-lg shadow"
     >
       <img
@@ -12,22 +12,22 @@
         class="w-20 h-20 object-cover border-2 border-transparent cursor-pointer hover:border-[#FFA600] rounded-md"
         [class.border-[#FFA600]]="i === activeImage"
       />
-    </div>
+    </div> -->
   </div>
 
   <!-- Middle Section: Full Size Image -->
-  <div class="flex-1">
+  <!-- <div class="flex-1">
     <img
       [src]="images[activeImage]"
       [alt]="images[activeImage]"
       class="w-full h-full object-cover rounded-lg shadow-md"
     />
-  </div>
+  </div> -->
 
   <!-- Right Section: Product Details -->
   <div class="w-full md:w-2/5 space-y-6">
     <!-- Title -->
-    <h2 class="text-2xl font-bold">Product Title</h2>
+    <h2 class="text-2xl font-bold">{{ productData?.productname }}</h2>
     <!-- Star Rating -->
     <div class="flex items-center space-x-1">
       <span class="text-yellow-500 text-xl">★</span>
@@ -38,11 +38,16 @@
     </div>
     <!-- Price -->
     <p class="text-xl font-semibold">
-      ₹999 <span class="line-through text-gray-500">₹1499</span>
-      <span class="text-green-500">(33% OFF)</span>
+      ₹{{ productData?.price }}
+      <span *ngIf="productData?.offerprice" class="line-through text-gray-500">
+        ₹1499</span
+      >
+      <span *ngIf="productData?.discountprice" class="text-green-500"
+        >(33% OFF)</span
+      >
     </p>
     <!-- Select Sizes -->
-    <div>
+    <!-- <div>
       <p class="font-medium">Select Size:</p>
       <div class="flex space-x-2 mt-2">
         <button
@@ -52,7 +57,7 @@
           {{ size }}
         </button>
       </div>
-    </div>
+    </div> -->
     <!-- Quantity -->
     <div class="flex items-center space-x-4">
       <p class="font-medium">Quantity:</p>

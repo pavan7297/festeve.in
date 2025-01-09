@@ -24,6 +24,8 @@ import { SuperAdminDashboardComponent } from './component/const/super-admin-dash
 import { ProductManagementScreenComponent } from './component/Dashboards/product-management-screen/product-management-screen.component';
 import { EssentialsManagementScreenComponent } from './component/Dashboards/essentials-management-screen/essentials-management-screen.component';
 import { PurohitManagementScrrenComponent } from './component/Dashboards/purohit-management-scrren/purohit-management-scrren.component';
+import { FestevedetailpageComponent } from './component/pages/sub-pages/festevedetailpage/festevedetailpage.component';
+import { AddtocartComponent } from './component/const/addtocart/addtocart.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
@@ -52,4 +54,6 @@ export const routes: Routes = [
   { path: 'manage-essentials', component: EssentialsManagementScreenComponent },
   { path: 'manage-purohits', component: PurohitManagementScrrenComponent },
   { path: 'footer', component: Footer1Component },
+  { path: 'festivaldescription', component: FestevedetailpageComponent },
+  { path: 'AddToCart', component: AddtocartComponent },
 ];

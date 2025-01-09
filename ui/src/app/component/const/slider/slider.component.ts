@@ -20,7 +20,7 @@ export class SliderComponent implements OnInit {
     this.images = [
       { url: 'assets/banner/b1.png', title: 'Image 1' },
       { url: 'assets/banner/b2.png', title: 'Image 2' },
-      { url: 'assets/banner/b3.png', title: 'Image 3' },
+      { url: 'assets/banner/b3.png', title: 'Image 3' }
     ];
     this.startAutoSlide();
   }

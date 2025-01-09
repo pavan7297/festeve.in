@@ -1,0 +1,83 @@
+<div
+  class="flex justify-center items-center min-h-screen bg-gray-100 bg-[url('assets/f1.webp')] bg-cover bg-center"
+>
+  <img src="" alt="" />
+  <div class="bg-white/30 backdrop-blur-sm shadow-lg rounded-lg p-6 w-full max-w-lg md:max-w-2xl">
+    <!-- First Row -->
+    <div class="flex flex-col md:flex-row gap-4">
+      <div class="w-full md:w-1/2">
+        <p-floatlabel>
+          <input
+            pInputText
+            id="first_name"
+            [(ngModel)]="Fname"
+            autocomplete="off"
+            class="w-full"
+          />
+          <label for="first_name">First Name</label>
+        </p-floatlabel>
+      </div>
+      <div class="w-full md:w-1/2">
+        <p-floatlabel>
+          <input
+            pInputText
+            id="last_name"
+            [(ngModel)]="Lname"
+            autocomplete="off"
+            class="w-full"
+          />
+          <label for="last_name">Last Name</label>
+        </p-floatlabel>
+      </div>
+    </div>
+
+    <!-- Second Row -->
+    <div class="flex flex-col md:flex-row gap-4 mt-4">
+      <div class="w-full md:w-1/2">
+        <label for="dob" class="font-bold block text-lime-900">DOB</label>
+        <p-datepicker
+          [(ngModel)]="date"
+          [iconDisplay]="'input'"
+          [showIcon]="true"
+          inputId="dob"
+          class="w-full"
+        ></p-datepicker>
+      </div>
+      <div class="w-full md:w-1/2">
+        <label for="gender" class="font-bold block text-lime-900">Gender</label>
+        <p-select
+          [options]="cities"
+          [(ngModel)]="selectedgender"
+          optionLabel="name"
+          placeholder="Select a Gender"
+          class="w-full"
+        ></p-select>
+      </div>
+    </div>
+
+    <!-- WhatsApp Number Row -->
+    <div class="mt-4">
+      <label for="withoutgrouping" class="font-bold block text-lime-900"
+        >WhatsApp Number</label
+      >
+      <p-inputnumber
+        [(ngModel)]="mobile"
+        mode="decimal"
+        inputId="withoutgrouping"
+        placeholder="9236794856"
+        [useGrouping]="false"
+        class="w-full"
+      ></p-inputnumber>
+    </div>
+
+    <!-- Button -->
+    <div class="flex justify-center mt-6">
+      <p-button
+        label="Submit"
+        severity="secondary"
+        class="w-full md:w-auto"
+        (onClick)="submit()"
+      ></p-button>
+    </div>
+  </div>
+</div>

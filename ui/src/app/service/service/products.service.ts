@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, Subject, throwError } from 'rxjs';
@@ -12,6 +13,7 @@ export class ProductsService {
   error = new Subject<string>();
 
   private apiUrl = 'http://localhost:2024';
+  private apiNodeUrl = 'http://localhost:3000/api/festival/';
 
   constructor(private http: HttpClient) {
     this.headers_post ==
@@ -22,7 +24,11 @@ export class ProductsService {
   }
 
   getMenProducts(): Observable<any> {
-    return this.http.get<any>(this.apiUrl + '/getMenProducts');
+    return this.http.get<any>(this.apiUrl + 'getMenProducts');
+  }
+
+  getNodeMenProducts(): Observable<any> {
+    return this.http.get<any>(this.apiNodeUrl + 'products/MEN');
   }
 
   getMen() {
@@ -31,7 +37,29 @@ export class ProductsService {
     };
 
     return this.http
-      .get<Mendata>(this.apiUrl + '/getMenProducts', options)
+      .get<Mendata>(this.apiUrl + 'getMenProducts', options)
+      .pipe(
+        map((responseData) => {
+          if (responseData.responseCode == 200) {
+            console.log(JSON.stringify(responseData));
+            return responseData.output;
+          } else {
+            return undefined;
+          }
+        }),
+        catchError((errorRes) => {
+          return throwError(errorRes);
+        })
+      );
+  }
+
+  getNodeMen() {
+    const options = {
+      headers: this.headers_post,
+    };
+
+    return this.http
+      .get<Mendata>(this.apiNodeUrl + 'products/MEN', options)
       .pipe(
         map((responseData) => {
           if (responseData.responseCode == 200) {
@@ -68,6 +96,54 @@ export class ProductsService {
           );
         })
       );
+  }
+  getProductByIdWithNode(productId: string) {
+    console.log("serveice product id:::::::::"+productId);
+    const options = {
+      headers: this.headers_post,
+    };
+
+    return this.http
+      .get<any>(this.apiNodeUrl+'getproducts/' + productId, options)
+      .pipe(
+        map((responseData) => {
+          // console.log("responseData:::::::::"+JSON.stringify(responseData));
+          // return responseData;
+          if (responseData && responseData.responseCode === 200) {
+            console.log(JSON.stringify(responseData));
+            return responseData;
+          } else {
+            console.error("Invalid response or responseCode not 200");
+            return undefined;
+          }
+        }),
+        catchError((errorRes) => {
+          return throwError(errorRes);
+        })
+      );
+  }
+
+  // New POST method for adding to cart
+  addToCart(cartData: { productId: string; addquantity: number }): Observable<any> {
+    const options = {
+      headers: this.headers_post,
+    };
+
+    return this.http.post<any>(this.apiNodeUrl+'addcart', cartData, options).pipe(
+      map((responseData) => {
+        if (responseData && responseData.responseCode === 201) {
+          console.log('Cart data stored successfully:', responseData);
+          return responseData;
+        } else {
+          console.error('Failed to store cart data. Response:', responseData);
+          return undefined;
+        }
+      }),
+      catchError((errorRes) => {
+        console.error('Error while storing cart data:', errorRes);
+        return throwError(errorRes);
+      })
+    );
   }
 }
 

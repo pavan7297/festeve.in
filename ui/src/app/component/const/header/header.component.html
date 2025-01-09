@@ -5,7 +5,8 @@
       <a
         [routerLink]="'Home'"
         class="bg-[url('assets/icons/festieve-logo.png')]"
-        ><img src="assets/icons/festieve-logo.png" alt="" class="h-[3rem]"></a>
+        ><img src="assets/icons/festieve-logo.png" alt="" class="h-[3rem]"
+      /></a>
     </h1>
 
     <!-- Mobile Menu Button -->
@@ -162,8 +163,8 @@
           </svg>
         </a>
       </li>
-      <li >
-        <a (click)="getLocation()" 
+      <li>
+        <a (click)="getLocation()"
           ><svg
             width="23"
             height="27"
@@ -218,10 +219,7 @@
         </a>
       </li>
 
-      <button
-        class=" px-3 rounded-full hover:text-tgreen"
-        (click)="gotologin()"
-      >
+      <button class="px-3 rounded-full hover:text-tgreen" (click)="gotologin()">
         Login
       </button>
     </ul>
@@ -257,6 +255,7 @@
       <li>
         <a [routerLink]="'about-us'" class="block hover:text-lime-700">About</a>
       </li>
+      <li><p-button label="Submit" /></li>
     </ul>
   </div>
 </nav>
